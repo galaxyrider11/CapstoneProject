@@ -388,7 +388,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
@@ -400,14 +399,14 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;ipywidgets&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
 </pre></div>
 </div>
 </div>
@@ -429,7 +428,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1c9fe14eb6e811dee6263f0d7142cd17851b73ef82a5ebca565b0ce521050937.png" src="_images/1c9fe14eb6e811dee6263f0d7142cd17851b73ef82a5ebca565b0ce521050937.png" />
+<img alt="_images/ce432b51f59368eaa2ff7cc81f6491d12318eafc52b2f97be5e1937485e2de13.png" src="_images/ce432b51f59368eaa2ff7cc81f6491d12318eafc52b2f97be5e1937485e2de13.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -441,7 +440,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4e861903af8af556bc656a67a2290c11276ba7c8a06f6c0dd468670e7ef2e85a.png" src="_images/4e861903af8af556bc656a67a2290c11276ba7c8a06f6c0dd468670e7ef2e85a.png" />
+<img alt="_images/08183935d40935ae84e9c5d4b3b69052add5338dd6f5b95788da4771b62f8a0a.png" src="_images/08183935d40935ae84e9c5d4b3b69052add5338dd6f5b95788da4771b62f8a0a.png" />
 </div>
 </div>
 <br>
@@ -509,7 +508,7 @@ R-Squared: 0.999814540556806
 </div>
 </div>
 </div>
-<p>The main benefit of adding this feature is to show which columns have the most effect on the predicted value. It turns out that the stock market doesn't depend on any certain day of the week, and can be predicted entirely with Open, Low, and Close values.</p><br>
+<br>
 <h4>Stock price fluctation through the years:</h4><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set X and Y values</span>
@@ -521,7 +520,7 @@ R-Squared: 0.999814540556806
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8118bcd02a6ac2e19f20cb5a675cb392cf8ab03b590fc7795d4fdbf326c7fc17.png" src="_images/8118bcd02a6ac2e19f20cb5a675cb392cf8ab03b590fc7795d4fdbf326c7fc17.png" />
+<img alt="_images/d68a5668d626147e1acfbc89fed47250d881e3eee9281f6f78a0c113eb9c1b10.png" src="_images/d68a5668d626147e1acfbc89fed47250d881e3eee9281f6f78a0c113eb9c1b10.png" />
 </div>
 </div>
 <p>This is just a siple graph to show the vaariations in stock prices throughout the years. This graph is particularly useful because it shows the range for each year, and the line between years showing the trend from year to year. Overall, Low and Open values were fairly close to the High value each day.</p><br>
@@ -563,30 +562,10 @@ R-Squared: 0.999814540556806
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/07e10e7b5faaea9e5fc7f6f5f2add5c08e99f171c013ce7c1845ed39677ec2b8.png" src="_images/07e10e7b5faaea9e5fc7f6f5f2add5c08e99f171c013ce7c1845ed39677ec2b8.png" />
+<img alt="_images/d446785f58370da52d3d533cd7da4bb2dc2da3493fae29331ff5b48edf2a390e.png" src="_images/d446785f58370da52d3d533cd7da4bb2dc2da3493fae29331ff5b48edf2a390e.png" />
 </div>
 </div>
-<p>Splitting the data in half, and then comparing predictions to the other half allows for very accurate predictions. As seen in this graph, the model is able to predict the High value of the NASDAQ with incredible precision.</p><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
-    <span class="n">value</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-    <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Test:&#39;</span><span class="p">,</span>
-    <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
-    <span class="n">readout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">readout_format</span><span class="o">=</span><span class="s1">&#39;d&#39;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8dfc0a3e56fc4635810a240131419b2e", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-</section>
+<p>Splitting the data in half, and then comparing predictions to the other half allows for very accurate predictions. As seen in this graph, the model is able to predict the High value of the NASDAQ with incredible precision.</p></section>
 
     <script type="text/x-thebe-config">
     {
