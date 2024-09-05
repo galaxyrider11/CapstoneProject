@@ -436,12 +436,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08183935d40935ae84e9c5d4b3b69052add5338dd6f5b95788da4771b62f8a0a.png" src="_images/08183935d40935ae84e9c5d4b3b69052add5338dd6f5b95788da4771b62f8a0a.png" />
+</div>
 </div>
 <br>
 <h4>Creating and training the model:</h4><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert day names to numerical values</span>
-<span class="n">features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># features = pd.get_dummies(df)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Value we want to predict</span>
 <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s1">&#39;High&#39;</span><span class="p">])</span>
@@ -493,11 +497,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 36.36 degrees.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 35.51 degrees.
 Mean Absolute Percentage Error: 99.62 %.
-Mean Squared Error: 3480.1800283300504
-Root Mean Squared Error: 58.993050678279474
-R-Squared: 0.999814540556806
+Mean Squared Error: 3331.174942247308
+Root Mean Squared Error: 57.71633167698124
+R-Squared: 0.9998224810656512
 </pre></div>
 </div>
 </div>
@@ -514,7 +518,7 @@ R-Squared: 0.999814540556806
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8118bcd02a6ac2e19f20cb5a675cb392cf8ab03b590fc7795d4fdbf326c7fc17.png" src="_images/8118bcd02a6ac2e19f20cb5a675cb392cf8ab03b590fc7795d4fdbf326c7fc17.png" />
+<img alt="_images/d68a5668d626147e1acfbc89fed47250d881e3eee9281f6f78a0c113eb9c1b10.png" src="_images/d68a5668d626147e1acfbc89fed47250d881e3eee9281f6f78a0c113eb9c1b10.png" />
 </div>
 </div>
 <p>This is just a siple graph to show the vaariations in stock prices throughout the years. This graph is particularly useful because it shows the range for each year, and the line between years showing the trend from year to year. Overall, Low and Open values were fairly close to the High value each day.</p><br>
@@ -556,10 +560,44 @@ R-Squared: 0.999814540556806
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/07e10e7b5faaea9e5fc7f6f5f2add5c08e99f171c013ce7c1845ed39677ec2b8.png" src="_images/07e10e7b5faaea9e5fc7f6f5f2add5c08e99f171c013ce7c1845ed39677ec2b8.png" />
+<img alt="_images/035f5f860f8d3c047b649e2cb46a9e38e8b0c0adfe7798cf20d737b6ad1da173.png" src="_images/035f5f860f8d3c047b649e2cb46a9e38e8b0c0adfe7798cf20d737b6ad1da173.png" />
 </div>
 </div>
-<p>Splitting the data in half, and then comparing predictions to the other half allows for very accurate predictions. As seen in this graph, the model is able to predict the High value of the NASDAQ with incredible precision.</p></section>
+<p>Splitting the data in half, and then comparing predictions to the other half allows for very accurate predictions. As seen in this graph, the model is able to predict the High value of the NASDAQ with incredible precision.</p><br>
+<h4>Predicting Values</h4><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+
+<span class="c1">#The text boxes where the user can input values.</span>
+<span class="n">o_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Open&#39;</span><span class="p">,</span><span class="nb">min</span><span class="o">=</span><span class="mi">18000</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span>
+<span class="n">c_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Close&#39;</span><span class="p">,</span><span class="nb">min</span><span class="o">=</span><span class="mi">19000</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">21000</span><span class="p">)</span>
+<span class="n">l_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Low&#39;</span><span class="p">,</span><span class="nb">min</span><span class="o">=</span><span class="mi">17000</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">18000</span><span class="p">)</span>
+
+<span class="c1">#A button for the user to get predictions using input valus. </span>
+<span class="n">button_predict</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Predict&#39;</span> <span class="p">)</span>
+<span class="n">button_output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Enter values and press the </span><span class="se">\&quot;</span><span class="s1">Predict</span><span class="se">\&quot;</span><span class="s1"> button.&#39;</span> <span class="p">)</span>
+
+<span class="c1">#Defines what happens when you click the button </span>
+<span class="k">def</span> <span class="nf">on_click_predict</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">predicition</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span>
+        <span class="mi">2024</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">c_widget</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">o_widget</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">l_widget</span><span class="o">.</span><span class="n">value</span><span class="p">]])</span>
+    <span class="n">button_output</span><span class="o">.</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Prediction = &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">predicition</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">button_predict</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_click_predict</span><span class="p">)</span>
+
+<span class="c1">#Displays the text boxes and buttons inside a VBox </span>
+<span class="n">vb</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">c_widget</span><span class="p">,</span> <span class="n">o_widget</span><span class="p">,</span> <span class="n">l_widget</span><span class="p">,</span> <span class="n">button_predict</span><span class="p">,</span> <span class="n">button_output</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[1m&#39;</span> <span class="o">+</span> <span class="s1">&#39;Slide value selector and click Predict&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[0m&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">vb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">Slide value selector and click Predict</span>
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f4f10b5a4ee840a0b54aa2dea1c88621", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
